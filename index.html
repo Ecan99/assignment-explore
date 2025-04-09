@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mpho's Assignment Help</title>
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
-    html, body {
-      height: 100%;
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
+    }
+
+    body {
       font-family: 'Open Sans', sans-serif;
       background-color: #f0f0f5;
       display: flex;
       flex-direction: column;
+      min-height: 100vh;
     }
 
     header {
@@ -29,24 +32,23 @@
       width: 100px;
       height: 100px;
       border-radius: 50%;
-      margin-top: 10px;
       object-fit: cover;
+      margin-top: 10px;
     }
 
     nav {
       display: flex;
-      justify-content: center;
       flex-wrap: wrap;
       background-color: #333;
     }
 
     nav a {
+      flex: 1 1 50%;
       color: white;
-      padding: 12px 16px;
       text-decoration: none;
       text-align: center;
+      padding: 12px;
       font-weight: 600;
-      flex: 1 1 50%;
     }
 
     nav a:hover {
@@ -56,8 +58,6 @@
     .content {
       flex: 1;
       padding: 20px;
-      width: 100%;
-      box-sizing: border-box;
     }
 
     .section {
@@ -71,6 +71,7 @@
     .section h2 {
       color: #6A1B9A;
       font-weight: 600;
+      margin-bottom: 15px;
     }
 
     .btn {
@@ -89,52 +90,24 @@
       background-color: #8E24AA;
     }
 
-    footer {
-      background-color: #333;
-      color: white;
-      text-align: center;
-      padding: 12px 10px;
-      width: 100%;
-    }
-
-    .contact-info a {
-      color: #6A1B9A;
-      text-decoration: none;
-    }
-
-    .testimonial-section, .about-section {
-      background-color: #ffffff;
-      padding: 20px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      border-radius: 8px;
-      margin-bottom: 30px;
-    }
-
-    .testimonial-section h2,
-    .about-section h2 {
-      color: #6A1B9A;
-      font-weight: 600;
-      margin-bottom: 15px;
-    }
-
-    .testimonial {
+    .testimonial-section .testimonial {
       display: flex;
-      align-items: center;
-      margin-bottom: 15px;
       flex-direction: column;
+      align-items: center;
       text-align: center;
+      margin-bottom: 20px;
     }
 
     .testimonial img {
       width: 60px;
       height: 60px;
       border-radius: 50%;
+      object-fit: cover;
       margin-bottom: 10px;
     }
 
-    .testimonial p {
-      font-style: italic;
-      color: #555;
+    .testimonial .stars {
+      color: #FFD700;
     }
 
     .testimonial span {
@@ -142,66 +115,32 @@
       color: #6A1B9A;
     }
 
-    .stars {
-      color: #FFD700;
-    }
-
-    .about-section img {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      margin-bottom: 15px;
-      object-fit: cover;
-    }
-
-    .about-content {
+    .about-section .about-content {
       display: flex;
       flex-direction: column;
       align-items: center;
+      text-align: center;
     }
 
-    /* Mobile-Friendly Review Form */
-    #reviewForm {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-top: 20px;
+    .about-content img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
     }
 
-    #reviewForm label,
-    #reviewForm input,
-    #reviewForm textarea,
-    #reviewForm button {
-      width: 100%;
-      box-sizing: border-box;
-      font-size: 16px;
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 12px 10px;
     }
 
-    #reviewForm input,
-    #reviewForm textarea {
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-    }
-
-    @media (min-width: 769px) {
-      header img {
-        width: 120px;
-        height: 120px;
-      }
-
+    @media (min-width: 768px) {
       nav a {
-        flex: unset;
-      }
-
-      .about-content {
-        flex-direction: row;
-        text-align: left;
-      }
-
-      .about-section img {
-        margin-right: 20px;
-        margin-bottom: 0;
+        flex: none;
+        padding: 14px 20px;
       }
 
       .testimonial {
@@ -213,13 +152,23 @@
         margin-right: 15px;
         margin-bottom: 0;
       }
+
+      .about-section .about-content {
+        flex-direction: row;
+        text-align: left;
+      }
+
+      .about-content img {
+        margin-right: 20px;
+        margin-bottom: 0;
+      }
     }
   </style>
 </head>
 <body>
 
   <header>
-    <img src="img/Ecan.jpg" alt="Mpho's Picture"> 
+    <img src="img/Ecan.jpg" alt="Mpho's Picture" />
     <h1>Mpho's Assignment Help</h1>
     <p>Grade 12 & Tertiary Student Support</p>
   </header>
@@ -250,11 +199,11 @@
       <p><strong>Tertiary Standard:</strong> 500+ words – R350 (extra research & referencing)</p>
     </div>
 
-    <!-- Testimonial Section -->
-    <div class="testimonial-section" id="testimonial">
+    <!-- Testimonials -->
+    <div class="section testimonial-section" id="testimonial">
       <h2>What Our Clients Say</h2>
       <div class="testimonial">
-        <img src="img/Angel.jpg" alt="Client 1">
+        <img src="img/Angel.jpg" alt="Client 1" />
         <div>
           <p>"Mpho's Assignment Help was amazing! My Geography project was completed within days and the work was top-notch. I couldn’t ask for better service!"</p>
           <div class="stars">⭐⭐⭐⭐⭐</div>
@@ -262,37 +211,20 @@
         </div>
       </div>
       <div class="testimonial">
-        <img src="img/Nini.jpg" alt="Client 2">
+        <img src="img/Nini.jpg" alt="Client 2" />
         <div>
           <p>"I was struggling with my IT assignment and I’m so grateful I found Mpho’s service. The deadline was met, and the work was thorough!"</p>
           <div class="stars">⭐⭐⭐⭐⭐</div>
           <span>- MS Ramathoka., University Student</span>
         </div>
       </div>
-
-      <!-- Review Submission Form -->
-      <h3>Add Your Review</h3>
-      <form id="reviewForm">
-        <label for="name">Your Name:</label>
-        <input type="text" id="name" required>
-
-        <label for="review">Your Review:</label>
-        <textarea id="review" rows="4" required></textarea>
-
-        <label for="rating">Rating (1-5):</label>
-        <input type="number" id="rating" min="1" max="5" required>
-
-        <button type="submit" class="btn">Submit Review</button>
-      </form>
-
-      <div id="reviewsContainer"></div>
     </div>
 
     <!-- About Section -->
-    <div class="about-section" id="about">
+    <div class="section about-section" id="about">
       <h2>About Me</h2>
       <div class="about-content">
-        <img src="img/Ecan.jpg" alt="Mpho's Picture"> 
+        <img src="img/Ecan.jpg" alt="Mpho's Picture" />
         <div>
           <p>Hello, I am Mpho! I created this website to help students like you succeed in their studies. I offer assignment writing assistance for Grade 12, College, and University students across different fields.</p>
           <p>My goal is to provide high-quality and affordable services for all your academic needs.</p>
@@ -300,6 +232,7 @@
       </div>
     </div>
 
+    <!-- Contact Section -->
     <div class="section" id="contact">
       <h2>Contact Me</h2>
       <p>📞 WhatsApp: <a href="#" class="btn" onclick="openWhatsApp()">Chat Now</a></p>
@@ -318,30 +251,6 @@
       const message = encodeURIComponent('Hi Mpho, I need help with an assignment.');
       window.open(`https://wa.me/${number}?text=${message}`, '_blank');
     }
-
-    // Review Submission Functionality
-    document.getElementById('reviewForm').addEventListener('submit', function(event) {
-      event.preventDefault();
-
-      const name = document.getElementById('name').value;
-      const review = document.getElementById('review').value;
-      const rating = document.getElementById('rating').value;
-
-      const newReview = document.createElement('div');
-      newReview.classList.add('testimonial');
-      newReview.innerHTML = `
-        <div>
-          <p>"${review}"</p>
-          <div class="stars">${'⭐'.repeat(rating)}</div>
-          <span>- ${name}</span>
-        </div>
-      `;
-      document.getElementById('reviewsContainer').appendChild(newReview);
-
-      // Reset form after submission
-      document.getElementById('reviewForm').reset();
-    });
   </script>
-
 </body>
 </html>
