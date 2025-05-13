@@ -3,9 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Mpho's Assignment Help - Affordable academic assistance for Grade 12 and tertiary students">
   <title>Mpho's Assignment Help</title>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
+    :root {
+      --primary: #6A1B9A;
+      --primary-dark: #4A148C;
+      --primary-light: #8E24AA;
+      --secondary: #333;
+      --text: #333;
+      --text-light: #666;
+      --bg-light: #f8f9fa;
+      --white: #ffffff;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+      --radius: 8px;
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -13,244 +31,835 @@
     }
 
     body {
-      font-family: 'Open Sans', sans-serif;
-      background-color: #f0f0f5;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text);
+      line-height: 1.6;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
     }
 
-    header {
-      background-color: #6A1B9A;
-      color: white;
-      text-align: center;
-      padding: 30px 15px;
-      border-bottom: 5px solid #4A148C;
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
     }
 
-    header img {
-      width: 100px;
-      height: 100px;
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: var(--white);
+      padding: 2rem 0;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .profile-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 4px solid var(--white);
+      box-shadow: var(--shadow);
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .profile-img:hover {
+      transform: scale(1.05);
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    /* Navigation */
+    .navbar {
+      background-color: var(--white);
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--primary);
+      cursor: pointer;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+
+    .nav-links li a {
+      display: block;
+      color: var(--text);
+      text-decoration: none;
+      padding: 1rem 1.2rem;
+      font-weight: 500;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .nav-links li a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 3px;
+      background-color: var(--primary);
+      transition: var(--transition);
+      transform: translateX(-50%);
+    }
+
+    .nav-links li a:hover {
+      color: var(--primary);
+    }
+
+    .nav-links li a:hover::after {
+      width: 70%;
+    }
+
+    /* Main Content */
+    main {
+      flex: 1;
+      padding: 3rem 0;
+    }
+
+    section {
+      margin-bottom: 4rem;
+      scroll-margin-top: 5rem;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background-color: var(--primary);
+    }
+
+    .card {
+      background-color: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 2rem;
+      height: 100%;
+      transition: var(--transition);
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Services Section */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      text-align: center;
+    }
+
+    .service-icon {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .service-title {
+      font-size: 1.2rem;
+      margin-bottom: 0.8rem;
+      font-weight: 600;
+    }
+
+    /* Pricing Section */
+    .pricing-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .price-card {
+      text-align: center;
+    }
+
+    .price-title {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .price {
+      font-size: 2rem;
+      color: var(--primary);
+      margin: 1rem 0;
+      font-weight: 700;
+    }
+
+    .price-original {
+      text-decoration: line-through;
+      color: var(--text-light);
+      font-size: 1.5rem;
+      margin-right: 0.5rem;
+    }
+
+    .price-features {
+      list-style: none;
+      margin: 1.5rem 0;
+    }
+
+    .price-features li {
+      margin-bottom: 0.8rem;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    .price-features li::before {
+      content: "\f00c";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      color: var(--primary);
+      position: absolute;
+      left: 0;
+    }
+
+    /* Testimonials */
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .testimonial-card {
+      position: relative;
+      padding-top: 3rem;
+    }
+
+    .testimonial-img {
+      width: 70px;
+      height: 70px;
       border-radius: 50%;
       object-fit: cover;
-      margin-top: 10px;
+      border: 3px solid var(--white);
+      box-shadow: var(--shadow);
+      position: absolute;
+      top: -35px;
+      left: 50%;
+      transform: translateX(-50%);
     }
 
-    nav {
+    .testimonial-text {
+      margin-bottom: 1rem;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .stars {
+      color: #FFD700;
+      margin: 0.5rem 0;
+    }
+
+    /* About Section */
+    .about-content {
       display: flex;
-      flex-wrap: wrap;
-      background-color: #333;
+      align-items: center;
+      gap: 2rem;
     }
 
-    nav a {
-      flex: 1 1 50%;
-      color: white;
-      text-decoration: none;
-      text-align: center;
-      padding: 12px;
-      font-weight: 600;
+    .about-img {
+      flex: 0 0 30%;
+      max-width: 300px;
     }
 
-    nav a:hover {
-      background-color: #575757;
+    .about-img img {
+      width: 100%;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
     }
 
-    .content {
+    .about-text {
       flex: 1;
-      padding: 20px;
     }
 
-    .section {
-      margin-bottom: 30px;
-      background: white;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    .about-text p {
+      margin-bottom: 1rem;
     }
 
-    .section h2 {
-      color: #6A1B9A;
+    /* Contact Section */
+    .contact-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .contact-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .contact-icon {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .contact-title {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
       font-weight: 600;
-      margin-bottom: 15px;
     }
 
     .btn {
       display: inline-block;
-      padding: 10px 20px;
-      background-color: #6A1B9A;
-      color: white;
+      background-color: var(--primary);
+      color: var(--white);
+      padding: 0.8rem 1.5rem;
+      border-radius: 30px;
       text-decoration: none;
-      border-radius: 5px;
-      margin-top: 10px;
-      font-weight: bold;
+      font-weight: 600;
+      transition: var(--transition);
+      border: none;
       cursor: pointer;
+      margin-top: 1rem;
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
     }
 
     .btn:hover {
-      background-color: #8E24AA;
+      background-color: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(106, 27, 154, 0.2);
     }
 
-    .testimonial-section .testimonial {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      margin-bottom: 20px;
+    .btn-outline:hover {
+      background-color: var(--primary);
+      color: var(--white);
     }
 
-    .testimonial img {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 10px;
-    }
-
-    .testimonial .stars {
-      color: #FFD700;
-    }
-
-    .testimonial span {
-      font-weight: bold;
-      color: #6A1B9A;
-    }
-
-    .about-section .about-content {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-
-    .about-content img {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 15px;
-    }
-
+    /* Footer */
     footer {
-      background-color: #333;
-      color: white;
+      background-color: var(--secondary);
+      color: var(--white);
+      padding: 2rem 0;
       text-align: center;
-      padding: 12px 10px;
     }
 
-    @media (min-width: 768px) {
-      nav a {
-        flex: none;
-        padding: 14px 20px;
+    .footer-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      color: var(--white);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .social-link:hover {
+      background-color: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: var(--primary);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: var(--shadow);
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+      z-index: 99;
+    }
+
+    .back-to-top.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-3px);
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .nav-toggle {
+        display: block;
       }
 
-      .testimonial {
-        flex-direction: row;
-        text-align: left;
+      .nav-links {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: 100vh;
+        background-color: var(--white);
+        flex-direction: column;
+        padding-top: 80px;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+        z-index: 99;
       }
 
-      .testimonial img {
-        margin-right: 15px;
-        margin-bottom: 0;
+      .nav-links.active {
+        left: 0;
       }
 
-      .about-section .about-content {
-        flex-direction: row;
-        text-align: left;
+      .nav-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        color: var(--primary);
+        cursor: pointer;
       }
 
-      .about-content img {
-        margin-right: 20px;
-        margin-bottom: 0;
+      .about-content {
+        flex-direction: column;
+        text-align: center;
       }
+
+      .about-img {
+        max-width: 200px;
+        margin: 0 auto;
+      }
+
+      .section-title {
+        text-align: center;
+      }
+
+      .section-title::after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+
+    @media (max-width: 576px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      .section-title {
+        font-size: 1.6rem;
+      }
+
+      .services-grid,
+      .pricing-cards,
+      .testimonials,
+      .contact-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in {
+      animation: fadeIn 0.6s ease forwards;
+    }
+
+    .delay-1 {
+      animation-delay: 0.2s;
+    }
+
+    .delay-2 {
+      animation-delay: 0.4s;
+    }
+
+    .delay-3 {
+      animation-delay: 0.6s;
     }
   </style>
 </head>
 <body>
-
+  <!-- Header Section -->
   <header>
-    <img src="img/Ecan.jpg" alt="Mpho's Picture" />
-    <h1>Mpho's Assignment Help</h1>
-    <p>Grade 12 & Tertiary Student Support</p>
+    <div class="container">
+      <div class="hero fade-in">
+        <img src="img/Ecan.jpg" alt="Mpho's Profile Picture" class="profile-img">
+        <h1>Mpho's Assignment Help</h1>
+        <p>Professional Academic Support for Grade 12 & Tertiary Students</p>
+        <a href="#contact" class="btn">Get Started</a>
+      </div>
+    </div>
   </header>
 
-  <nav>
-    <a href="#services">Services</a>
-    <a href="#pricing">Pricing</a>
-    <a href="#testimonial">Testimonials</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-  </nav>
-
-  <div class="content">
-    <div class="section" id="services">
-      <h2>Services</h2>
-      <ul>
-        <li>Grade 12 Geography Research Project Help</li>
-        <li>Tertiary Assignments – IT, HR, BSc, Teaching & more</li>
-        <li>Reports, Research Papers, Essays, and MS Office Documents</li>
-        <li>Urgent Deadlines Accepted!</li>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="#" class="nav-logo">
+        <strong style="color: var(--primary);">Mpho's</strong> Help
+      </a>
+      <button class="nav-toggle" id="navToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <button class="nav-close" id="navClose">
+          <i class="fas fa-times"></i>
+        </button>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
+  </nav>
 
-    <div class="section" id="pricing">
-      <h2>Pricing</h2>
-      <p><strong>Grade 12:</strong> <del>R200</del> → <strong>R150</strong></p>
-      <p><strong>Tertiary Basic:</strong> 500 words – R250 (includes in-text references & bibliography)</p>
-      <p><strong>Tertiary Standard:</strong> 500+ words – R350 (extra research & referencing)</p>
-    </div>
-
-    <!-- Testimonials -->
-    <div class="section testimonial-section" id="testimonial">
-      <h2>What Our Clients Say</h2>
-      <div class="testimonial">
-        <img src="img/Angel.jpg" alt="Client 1" />
-        <div>
-          <p>"Mpho's Assignment Help was amazing! My Geography project was completed within days and the work was top-notch. I couldn’t ask for better service!"</p>
-          <div class="stars">⭐⭐⭐⭐⭐</div>
-          <span>- AM Mokumo., Grade 12 Student</span>
+  <!-- Main Content -->
+  <main>
+    <div class="container">
+      <!-- Services Section -->
+      <section id="services" class="fade-in">
+        <h2 class="section-title">Services</h2>
+        <div class="services-grid">
+          <div class="card service-card delay-1">
+            <div class="service-icon">
+              <i class="fas fa-book"></i>
+            </div>
+            <h3 class="service-title">Grade 12 Projects</h3>
+            <p>Get expert help with your Geography research projects and other Grade 12 assignments.</p>
+          </div>
+          <div class="card service-card delay-2">
+            <div class="service-icon">
+              <i class="fas fa-laptop-code"></i>
+            </div>
+            <h3 class="service-title">Tertiary Assignments</h3>
+            <p>Professional assistance for IT, HR, BSc, Teaching and various other tertiary fields.</p>
+          </div>
+          <div class="card service-card delay-3">
+            <div class="service-icon">
+              <i class="fas fa-file-alt"></i>
+            </div>
+            <h3 class="service-title">Academic Documents</h3>
+            <p>Well-researched reports, essays, research papers and MS Office documents.</p>
+          </div>
+          <div class="card service-card">
+            <div class="service-icon">
+              <i class="fas fa-clock"></i>
+            </div>
+            <h3 class="service-title">Urgent Deadlines</h3>
+            <p>Last-minute assignments? No problem! Quick turnaround time for urgent deadlines.</p>
+          </div>
         </div>
-      </div>
-      <div class="testimonial">
-        <img src="img/Nini.jpg" alt="Client 2" />
-        <div>
-          <p>"I was struggling with my IT assignment and I’m so grateful I found Mpho’s service. The deadline was met, and the work was thorough!"</p>
-          <div class="stars">⭐⭐⭐⭐⭐</div>
-          <span>- MS Ramathoka., University Student</span>
+      </section>
+
+      <!-- Pricing Section -->
+      <section id="pricing" class="fade-in">
+        <h2 class="section-title">Affordable Pricing</h2>
+        <div class="pricing-cards">
+          <div class="card price-card delay-1">
+            <h3 class="price-title">Grade 12 Package</h3>
+            <div class="price">
+              <span class="price-original">R200</span>R150
+            </div>
+            <ul class="price-features">
+              <li>Basic research assistance</li>
+              <li>Formatting & structure</li>
+              <li>Quick turnaround</li>
+              <li>Free revisions</li>
+            </ul>
+            <a href="#contact" class="btn">Get Started</a>
+          </div>
+          <div class="card price-card delay-2">
+            <h3 class="price-title">Tertiary Basic</h3>
+            <div class="price">R250</div>
+            <ul class="price-features">
+              <li>500 words</li>
+              <li>In-text references</li>
+              <li>Bibliography included</li>
+              <li>Standard formatting</li>
+            </ul>
+            <a href="#contact" class="btn">Get Started</a>
+          </div>
+          <div class="card price-card delay-3">
+            <h3 class="price-title">Tertiary Standard</h3>
+            <div class="price">R350</div>
+            <ul class="price-features">
+              <li>500+ words</li>
+              <li>Extra research</li>
+              <li>Comprehensive referencing</li>
+              <li>Premium formatting</li>
+            </ul>
+            <a href="#contact" class="btn btn-outline">Get Started</a>
+          </div>
         </div>
-      </div>
-    </div>
+      </section>
 
-    <!-- About Section -->
-    <div class="section about-section" id="about">
-      <h2>About Me</h2>
-      <div class="about-content">
-        <img src="img/Ecan.jpg" alt="Mpho's Picture" />
-        <div>
-          <p>Hello, I am Mpho! I created this website to help students like you succeed in their studies. I offer assignment writing assistance for Grade 12, College, and University students across different fields.</p>
-          <p>My goal is to provide high-quality and affordable services for all your academic needs.</p>
+      <!-- Testimonials Section -->
+      <section id="testimonials" class="fade-in">
+        <h2 class="section-title">What Our Clients Say</h2>
+        <div class="testimonials">
+          <div class="card testimonial-card delay-1">
+            <img src="img/Angel.jpg" alt="Client 1" class="testimonial-img">
+            <div class="stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <p class="testimonial-text">"Mpho's Assignment Help was amazing! My Geography project was completed within days and the work was top-notch. I couldn't ask for better service!"</p>
+            <p class="testimonial-author">- AM Mokumo, Grade 12 Student</p>
+          </div>
+          <div class="card testimonial-card delay-2">
+            <img src="img/Nini.jpg" alt="Client 2" class="testimonial-img">
+            <div class="stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <p class="testimonial-text">"I was struggling with my IT assignment and I'm so grateful I found Mpho's service. The deadline was met, and the work was thorough!"</p>
+            <p class="testimonial-author">- MS Ramathoka, University Student</p>
+          </div>
+          <div class="card testimonial-card delay-3">
+            <img src="/api/placeholder/80/80" alt="Client 3" class="testimonial-img">
+            <div class="stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <p class="testimonial-text">"Mpho helped me with my teaching assignment and I received a distinction! The work was well-researched and perfectly formatted."</p>
+            <p class="testimonial-author">- TL Sebola, Education Student</p>
+          </div>
         </div>
-      </div>
-    </div>
+      </section>
 
-    <!-- Contact Section -->
-    <div class="section" id="contact">
-      <h2>Contact Me</h2>
-      <p>📞 WhatsApp: <a href="#" class="btn" onclick="openWhatsApp()">Chat Now</a></p>
-      <p>📧 Email: <a href="mailto:mphoecan95@gmail.com">mphoecan95@gmail.com</a></p>
-      <p>📷 Instagram: <a href="https://instagram.com/mpho_ecan" target="_blank">@mpho_ecan</a></p>
-    </div>
-  </div>
+      <!-- About Section -->
+      <section id="about" class="fade-in">
+        <h2 class="section-title">About Me</h2>
+        <div class="card">
+          <div class="about-content">
+            <div class="about-img">
+              <img src="img/Ecan.jpg" alt="Mpho's Picture">
+            </div>
+            <div class="about-text">
+              <p>Hello, I am Mpho! I created this platform to help students like you succeed in their academic journey. With years of experience in academic writing and research, I offer professional assignment assistance for Grade 12, College, and University students across various fields.</p>
+              <p>My goal is to provide high-quality, affordable services that help you achieve your academic goals. I understand the pressures of student life and deadlines, which is why I offer reliable and timely assistance tailored to your specific needs.</p>
+              <p>Let me help you transform your academic performance with expertly crafted assignments that meet all requirements.</p>
+              <a href="#contact" class="btn">Get in Touch</a>
+            </div>
+          </div>
+        </div>
+      </section>
 
+      <!-- Contact Section -->
+      <section id="contact" class="fade-in">
+        <h2 class="section-title">Get in Touch</h2>
+        <div class="contact-container">
+          <div class="card contact-card delay-1">
+            <div class="contact-icon">
+              <i class="fab fa-whatsapp"></i>
+            </div>
+            <h3 class="contact-title">WhatsApp</h3>
+            <p>Quick responses via WhatsApp</p>
+            <a href="#" class="btn" onclick="openWhatsApp()">Chat Now</a>
+          </div>
+          <div class="card contact-card delay-2">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <h3 class="contact-title">Email</h3>
+            <p>mphoecan95@gmail.com</p>
+            <a href="mailto:mphoecan95@gmail.com" class="btn">Send Email</a>
+          </div>
+          <div class="card contact-card delay-3">
+            <div class="contact-icon">
+              <i class="fab fa-instagram"></i>
+            </div>
+            <h3 class="contact-title">Instagram</h3>
+            <p>@mpho_ecan</p>
+            <a href="https://instagram.com/mpho_ecan" target="_blank" class="btn">Follow</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
   <footer>
-    <p>© 2025 Mpho's Assignment Help. All Rights Reserved.</p>
+    <div class="container footer-container">
+      <div class="social-links">
+        <a href="#" class="social-link">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://instagram.com/mpho_ecan" target="_blank" class="social-link">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="#" onclick="openWhatsApp()" class="social-link">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </div>
+      <p>&copy; 2025 Mpho's Assignment Help. All Rights Reserved.</p>
+    </div>
   </footer>
 
+  <!-- Back to Top Button -->
+  <a href="#" class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+  <!-- JavaScript -->
   <script>
+    // Mobile Navigation
+    const navToggle = document.getElementById('navToggle');
+    const navClose = document.getElementById('navClose');
+    const navLinks = document.getElementById('navLinks');
+
+    if (navToggle) {
+      navToggle.addEventListener('click', () => {
+        navLinks.classList.add('active');
+      });
+    }
+
+    if (navClose) {
+      navClose.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
+    }
+
+    // Close mobile menu when clicking a link
+    const navItems = document.querySelectorAll('.nav-links li a');
+    navItems.forEach(item => {
+      item.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
+    });
+
+    // Back to top button
+    const backToTopButton = document.getElementById('backToTop');
+    
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopButton.classList.add('active');
+      } else {
+        backToTopButton.classList.remove('active');
+      }
+    });
+
+    backToTopButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // WhatsApp function
     function openWhatsApp() {
       const number = '27691716768';
       const message = encodeURIComponent('Hi Mpho, I need help with an assignment.');
       window.open(`https://wa.me/${number}?text=${message}`, '_blank');
     }
+
+    // Intersection Observer for animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('section').forEach(section => {
+      section.classList.remove('fade-in');
+      observer.observe(section);
+    });
   </script>
 </body>
 </html>
